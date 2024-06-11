@@ -1,0 +1,21 @@
+.layout {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	min-height: 100%;
+	overflow-wrap: break-word;
+
+	header {
+		position: sticky;
+		top: 0;
+		padding: 0.6em;
+
+		@apply bg-cool-gray-600 text-light-400 shadow-md shadow-gray-600;
+	}
+
+	footer {
+		padding: 0.6em;
+
+		@apply bg-cool-gray-400;
+	}
+}

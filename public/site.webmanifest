@@ -1,0 +1,28 @@
+{
+	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
+	"short_name": "(((app-title)))",
+	"name": "(((app-title)))",
+	"icons": [
+		{
+			"src": "icons/favicon.ico",
+			"sizes": "48x48",
+			"type": "image/x-icon"
+		},
+		{
+			"src": "icons/android-chrome-192x192.png",
+			"type": "image/png",
+			"sizes": "192x192",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "icons/android-chrome-512x512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "any maskable"
+		}
+	],
+	"start_url": ".",
+	"display": "minimal-ui",
+	"theme_color": "#1976D2",
+	"background_color": "#ebeff2"
+}
