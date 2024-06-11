@@ -1,0 +1,48 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig.json",
+	"compilerOptions": {
+		"rootDir": ".",
+		"baseUrl": "src",
+		"outDir": "dist",
+
+		"target": "es2020",
+		"module": "es2022",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+
+		"jsx": "react-jsx",
+		"lib": ["dom", "es2023"],
+		"types": ["vite/client", "vitest/globals"],
+
+		"experimentalDecorators": false,
+		"emitDecoratorMetadata": false,
+
+		"incremental": true,
+		"sourceMap": true,
+		"declaration": false,
+		"declarationMap": false,
+		"noEmit": true,
+
+		"isolatedModules": true,
+		"esModuleInterop": false,
+		"importHelpers": false,
+		"allowSyntheticDefaultImports": true,
+		"allowImportingTsExtensions": true,
+
+		"strict": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"strictPropertyInitialization": false,
+
+		"skipLibCheck": true
+	},
+	"include": [
+		"src",
+		"vite.config.ts",
+		"vitest.config.ts",
+		"unocss.config.ts",
+		"commitlint.config.ts",
+		"vitest.setup.ts",
+		"__mocks__"
+	]
+}

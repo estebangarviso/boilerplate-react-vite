@@ -1,0 +1,40 @@
+{
+	"$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+	"packageManager": "pnpm",
+	"testRunner": "vitest",
+	"concurrency": 8,
+	"incremental": true,
+	"ignoreStatic": false,
+	"commandRunner": {
+		"command": "pnpm exec vitest"
+	},
+	"coverageAnalysis": "perTest",
+	"reporters": ["clear-text", "progress", "dots", "html", "json"],
+	"ignorePatterns": [
+		"dist",
+		"**/*.{d,config,mock,fixture,interface}.{ts,cts,mts}",
+		"**/{index,main}.{ts,cts,mts}",
+		"**/__{tests,mocks,fixtures}__"
+	],
+	"tsconfigFile": "tsconfig.json",
+	"checkers": ["typescript"],
+	"plugins": [
+		"@stryker-mutator/vitest-runner",
+		"@stryker-mutator/typescript-checker"
+	],
+	"typescriptChecker": {
+		"prioritizePerformanceOverAccuracy": true
+	},
+	"clearTextReporter": {
+		"allowColor": true,
+		"allowEmojis": true,
+		"logTests": true
+	},
+	"incrementalFile": "node_modules/.cache/stryker/cache.json",
+	"htmlReporter": {
+		"fileName": ".reports/mutations.html"
+	},
+	"jsonReporter": {
+		"fileName": ".reports/mutations.json"
+	}
+}

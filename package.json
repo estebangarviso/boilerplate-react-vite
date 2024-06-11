@@ -1,0 +1,203 @@
+{
+	"$schema": "https://json.schemastore.org/package.json",
+	"version": "1.0.0",
+	"project": "(((project-name)))",
+	"name": "(((app-name)))",
+	"title": "(((app-title)))",
+	"scripts": {
+		"start:dev": "env -e dev -m debug --log debug : vite",
+		"start:release": "env -e release -m debug : vite",
+		"build:dev": "wireit",
+		"build:release": "wireit",
+		"test:dev": "env -e dev -m test : vitest",
+		"test:release": "env -e release -m test : vitest",
+		"test:mutation": "env -e dev -m test : stryker run",
+		"env:schema": "wireit",
+		"lint": "wireit",
+		"stylelint": "wireit",
+		"format": "wireit",
+		"clean": "pnpx del-cli dist reports **/*.tsbuildinfo .wireit .swc .node_modules",
+		"preview": "wireit",
+		"prepare": "husky install"
+	},
+	"imports": {
+		"#libs/router": "./src/libs/router/index.ts",
+		"#libs/feature": "./src/libs/feature/index.ts"
+	},
+	"license": "MIT",
+	"repository": "https://github.com/estebangarviso/react-vite-starter",
+	"keywords": [
+		"react",
+		"pnpm",
+		"vite",
+		"vitest",
+		"typescript",
+		"spa",
+		"pwa",
+		"unocss"
+	],
+	"type": "module",
+	"dependencies": {
+		"react": "18.3.1",
+		"react-dom": "18.3.1",
+		"react-router-dom": "6.23.1",
+		"zustand": "4.5.2"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "19.3.0",
+		"@commitlint/config-conventional": "19.2.2",
+		"@commitlint/types": "^19.0.3",
+		"@stryker-mutator/core": "8.2.6",
+		"@stryker-mutator/typescript-checker": "8.2.6",
+		"@stryker-mutator/vitest-runner": "8.2.6",
+		"@testing-library/dom": "10.1.0",
+		"@testing-library/jest-dom": "^6.4.5",
+		"@testing-library/react": "15.0.7",
+		"@testing-library/user-event": "14.5.2",
+		"@types/eslint": "8.56.10",
+		"@types/node": "20.13.0",
+		"@types/react": "18.3.3",
+		"@types/react-dom": "18.3.0",
+		"@unocss/eslint-config": "0.60.4",
+		"@v10e/env": "2.11.2",
+		"@vitejs/plugin-react-swc": "3.7.0",
+		"@vitest/coverage-v8": "1.6.0",
+		"eslint": "9.4.0",
+		"eslint-config-prettier": "9.1.0",
+		"eslint-plugin-jsx-a11y": "6.8.0",
+		"eslint-plugin-perfectionist": "2.10.0",
+		"eslint-plugin-prettier": "5.1.3",
+		"eslint-plugin-react": "7.34.2",
+		"eslint-plugin-redos": "4.4.5",
+		"eslint-plugin-regexp": "2.6.0",
+		"eslint-plugin-sonarjs": "1.0.3",
+		"eslint-plugin-testing-library": "6.2.2",
+		"eslint-plugin-tsdoc": "0.3.0",
+		"eslint-plugin-unicorn": "53.0.0",
+		"eslint-plugin-vitest": "0.5.4",
+		"globals": "15.3.0",
+		"husky": "9.0.11",
+		"jsdom": "24.1.0",
+		"postcss": "8.4.38",
+		"prettier": "3.3.0",
+		"sass": "1.77.4",
+		"stylelint": "16.6.1",
+		"stylelint-config-rational-order": "0.1.2",
+		"stylelint-config-recommended": "14.0.0",
+		"stylelint-config-standard": "36.0.0",
+		"stylelint-config-standard-scss": "13.1.0",
+		"stylelint-order": "6.0.4",
+		"stylelint-prettier": "5.0.0",
+		"stylelint-scss": "6.3.0",
+		"tslib": "2.6.2",
+		"typescript": "5.4.5",
+		"typescript-eslint": "7.11.0",
+		"unocss": "0.60.4",
+		"vite": "5.2.12",
+		"vite-plugin-checker": "0.6.4",
+		"vite-plugin-pwa": "0.20.0",
+		"vite-plugin-webfont-dl": "3.9.4",
+		"vitest": "1.6.0",
+		"vitest-mock-extended": "1.3.1",
+		"wireit": "0.14.4"
+	},
+	"wireit": {
+		"build:dev": {
+			"command": "env -e dev -m build --log debug : vite build",
+			"clean": "if-file-deleted",
+			"output": [
+				"dist/**"
+			],
+			"files": [
+				"src/**",
+				"public/**",
+				"index.html",
+				"tsconfig.json",
+				"vite.config.ts",
+				"env/appsettings.json",
+				"env/dev.env.json",
+				"!**/*.{spec,test}.*",
+				"!**/__{tests,mocks,fixtures}__/*"
+			]
+		},
+		"build:release": {
+			"command": "env -e dev -m build --log debug : vite build",
+			"clean": "if-file-deleted",
+			"output": [
+				"dist/**"
+			],
+			"files": [
+				"src/**",
+				"public/**",
+				"index.html",
+				"tsconfig.json",
+				"vite.config.ts",
+				"env/appsettings.json",
+				"env/release.env.json",
+				"!**/*.{spec,test}.*",
+				"!**/__{tests,mocks,fixtures}__/*"
+			]
+		},
+		"preview": {
+			"command": "vite preview",
+			"dependencies": [
+				"build:dev"
+			],
+			"env": {
+				"BASE_URL": "/"
+			}
+		},
+		"format": {
+			"command": "prettier --cache --write **/*.{ts,cts,mts,tsx,css,scss,sass,json,html,md,yml,yaml,webmanifest}",
+			"output": [
+				"./node_modules/.cache/prettier/.prettier-cache"
+			],
+			"files": [
+				".prettierrc",
+				".prettierignore",
+				"**/*.{ts,cts,mts,tsx,css,scss,sass,json,html,md,yml,yaml,webmanifest}"
+			]
+		},
+		"lint": {
+			"command": "eslint --cache --cache-location node_modules/.cache/eslint/",
+			"output": [
+				"./node_modules/.cache/eslint/"
+			],
+			"files": [
+				"eslint.config.js",
+				".prettierrc",
+				".prettierignore",
+				"**/*.{js,mjs,cjs,jsx,ts,cts,mts,tsx,json}"
+			],
+			"dependencies": [
+				"stylelint"
+			]
+		},
+		"stylelint": {
+			"command": "stylelint --cache src/**/*.{css,scss,sass} --cache-location node_modules/.cache/stylelint/",
+			"output": [
+				"./node_modules/.cache/stylelint/"
+			],
+			"files": [
+				".stylelintrc",
+				".stylelintignore",
+				"src/**/*.{css,scss,sass}"
+			]
+		},
+		"env:schema": {
+			"command": "env schema -e dev -m build",
+			"output": [
+				"env/settings/schema.json"
+			],
+			"files": [
+				"env/appsettings.json",
+				"env/*.env.json"
+			]
+		}
+	},
+	"engines": {
+		"node": ">=20",
+		"npm": ">=9",
+		"pnpm": ">=8"
+	}
+}

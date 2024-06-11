@@ -1,0 +1,36 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "prelaunch",
+			"script": "start:${input:environmentName}",
+			"type": "npm",
+			"isBackground": true,
+			"problemMatcher": {
+				"pattern": {
+					"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$"
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "^.*loading.*environment in.*mode.*",
+					"endsPattern": "^.*Local:.*http://localhost:.*"
+				}
+			},
+			"presentation": {
+				"close": true,
+				"focus": true,
+				"reveal": "silent",
+				"revealProblems": "onProblem"
+			}
+		}
+	],
+	"inputs": [
+		{
+			"id": "environmentName",
+			"description": "Select execution environment",
+			"type": "pickString",
+			"options": ["dev", "qa", "prod"],
+			"default": "dev"
+		}
+	]
+}

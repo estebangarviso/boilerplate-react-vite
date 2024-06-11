@@ -1,0 +1,10 @@
+# ignores everything
+*
+!*/
+!.gitignore
+
+# whitelist
+!README.md
+!appsettings.json
+!/settings/settings.json
+!/settings/schema.json

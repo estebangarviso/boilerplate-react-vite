@@ -1,0 +1,71 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug in Edge",
+			"type": "msedge",
+			"request": "launch",
+			"url": "http://localhost:3003",
+			"webRoot": "${workspaceFolder}",
+			"preLaunchTask": "prelaunch"
+		},
+		{
+			"name": "Debug in Chrome",
+			"type": "chrome",
+			"request": "launch",
+			"url": "http://localhost:3003",
+			"webRoot": "${workspaceFolder}",
+			"preLaunchTask": "prelaunch"
+		},
+		{
+			"name": "Test",
+			"type": "node",
+			"request": "launch",
+			"restart": true,
+			"smartStep": true,
+			"autoAttachChildProcesses": true,
+			"runtimeExecutable": "pnpm",
+			"runtimeArgs": [
+				"run",
+				"test:${input:environmentName}",
+				"${relativeFile}",
+				"--inspect",
+				"--no-threads",
+				"--test-timeout=0"
+			],
+			"outFiles": ["${workspaceFolder}/src/**/*.ts"],
+			"skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen"
+		},
+		{
+			"name": "Test All",
+			"type": "node",
+			"request": "launch",
+			"restart": true,
+			"smartStep": true,
+			"autoAttachChildProcesses": true,
+			"runtimeExecutable": "pnpm",
+			"runtimeArgs": [
+				"run",
+				"test:${input:environmentName}",
+				"--inspect",
+				"--no-threads",
+				"--test-timeout=0"
+			],
+			"outFiles": ["${workspaceFolder}/src/**/*.ts"],
+			"skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen"
+		}
+	],
+	"inputs": [
+		{
+			"id": "environmentName",
+			"type": "pickString",
+			"description": "Select execution environment",
+			"default": "dev",
+			"options": ["dev", "release"]
+		}
+	]
+}

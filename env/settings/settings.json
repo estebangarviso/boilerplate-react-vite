@@ -1,0 +1,7 @@
+{
+	"$schema": "../../node_modules/@v10e/env/schemas/settings.schema.json",
+	"expand": true,
+	"nullable": false,
+	"schemaValidate": true,
+	"nestingDelimiter": "_"
+}
