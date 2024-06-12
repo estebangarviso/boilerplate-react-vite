@@ -18,7 +18,7 @@
 		"format": "wireit",
 		"clean": "pnpx del-cli dist reports **/*.tsbuildinfo .wireit .swc .node_modules",
 		"preview": "wireit",
-		"prepare": "husky install"
+		"prepare": "node .husky/install.mjs"
 	},
 	"imports": {
 		"#libs/router": "./src/libs/router/index.ts",
