@@ -86,7 +86,7 @@ your environment secrets files (dev|qa|prod).
 Schema uses JSON schema v4 standard, so you can add custom validations.
 Updating the schema model will merge changes by default.
 
-For each property in the file, loader will retrieve the value from Azure Key
+For each property in the file, loader will retrieve the value from Key
 Vault.
 
 When you push a new variable from any of your environment secrets
